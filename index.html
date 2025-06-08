@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <link rel="icon" href="/favicon.jpg" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>262144 次反拍</title>
+  <title>262144 次反拍企划</title>
   <style>
     /* 全页重置和排版 */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,7 +16,7 @@
     /* 上半部分 */
     .hero {
       position: relative;
-      height: 40vh;
+      height: 33vh;
       flex: none;
       min-height: 25vh;
       display: flex;
@@ -31,7 +32,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: url('https://raw.githubusercontent.com/Shunpower/shunpower.github.io/refs/heads/main/background.jpg') no-repeat top center;
+      background: url('/background.jpg') no-repeat top center;
       background-size: cover;
       opacity: 0.5;
       z-index: 0;
@@ -45,10 +46,20 @@
     }
     .hero .title { font-size: 4rem; line-height: 1.2; font-weight: bold; width: 50%; }
     .hero .subtitle { font-size: 1rem; color: white; width: 40%; line-height: 1.5; }
+    
+     .content {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      gap: 20px;           /* 侧边栏与主内容之间留出间距 */
+      padding: 0 20px;     /*内容区左右内边距*/
+      /* max-width: ;   限制整体宽度 */
+      margin: 0 auto;      /*居中显示内容区*/
+    }
 
     /* 下半部分 */
-    .links-section { background: white; padding: 40px 20px; height: 60vh; flex: none; overflow-y: auto; }
-    .links-list { list-style: none; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+    .links-section { background: white; padding: 40px 20px; height: 67vh; flex: none; overflow-y: auto; }
+    .links-list { list-style: none; width: 50vw; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
     .links-list li {
       display: flex;
       flex-direction: column;
@@ -78,6 +89,20 @@
 
     .links-list .desc { font-size: 0.9rem; color: #666; line-height: 1.4; }
 
+    .sidebar { width: 15vw; background: #f5f5f5; padding: 20px; border-right: 1px solid #e0e0e0; overflow-y: auto; }
+    .sidebar ul { list-style: none; }
+    .sidebar li + li { margin-top: 10px; }
+    .sidebar-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 16px;  /* 标题下方与列表间距 */
+    }
+    .sidebar linest { text-decoration: none; color: #000; font-size: 1rem; transition: color .2s; }
+    .sidebar a { text-decoration: none; color: #fda7f9; font-size: 1rem; transition: color .2s; }
+    .sidebar a:hover { color: #f656db; }
+
     .samplelinks a {
       display: inline-block;
       font-size: 1rem;
@@ -92,8 +117,6 @@
     .samplelinks a:hover {
       color: white;
     }
-
-    .links-list .desc { font-size: 0.9rem; color: #666; line-height: 1.4; }
   </style>
 </head>
 <body>
@@ -105,45 +128,75 @@
         <header class="hero">
         <div class="text">
             <div class="title">262144 次反拍</div>
-            <div class="subtitle">该企划由<a href="https://www.weibo.com/u/7607032128" target="_blank">顺式还原剂</a>在张峻豪 18 岁生日时发起，旨在维护张峻豪相关算法竞赛题集。</div>
+            <div class="subtitle">262144 次反拍（262144 Backbeats）企划由<a href="https://www.weibo.com/u/7607032128" target="_blank">顺式还原剂</a>在张峻豪 18 岁生日时发起，旨在维护张峻豪相关算法竞赛题集。</div>
         </div>
         </header>
     </section>
 
-    <!-- 下半部分：链接列表 -->
-    <section class="links-section">
-      <ul class="links-list">
-        <li>
-          <a href="https://example.com/link1" target="_blank">示例链接 1</a>
-          <div class="desc">这里是对示例链接 1 的简短介绍。</div>
-        </li>
-        <center><h2>六个最珍贵的瞬间</h2></center>
-        <HR style= " border: 1 dashed #987cb9" width ="100%" color =#987cb9 SIZE = 1>
-        <li>
-          <a href="https://example.com/link2" target="_blank">示例链接 2</a>
-          <div class="desc">这里是对示例链接 2 的简短介绍。</div>
-        </li>
-        <li>
-          <a href="https://example.com/link3" target="_blank">示例链接 3</a>
-          <div class="desc">这里是对示例链接 3 的简短介绍。</div>
-        </li>
-        <center><h2>SHUN@Prologue</h2></center>
-        <HR style= " border: 1 dashed #987cb9" width ="100%" color =#987cb9 SIZE = 1>
-        <li>
-          <a href="https://example.com/link1" target="_blank">示例链接 1</a>
-          <div class="desc">这里是对示例链接 1 的简短介绍。</div>
-        </li>
-        <li>
-          <a href="https://example.com/link2" target="_blank">示例链接 2</a>
-          <div class="desc">这里是对示例链接 2 的简短介绍。</div>
-        </li>
-        <li>
-          <a href="https://example.com/link3" target="_blank">示例链接 3</a>
-          <div class="desc">这里是对示例链接 3 的简短介绍。</div>
-        </li>
-      </ul>
-    </section>
+    
+    <div class="content">
+      <nav class="sidebar">
+        <div class="sidebar-title">题集目录</div>
+        <ul>
+          <li>
+            <linest>• </linest>
+            <a href="#link1">六个最珍贵的瞬间</a>
+          </li>
+          <li>
+            <linest>• </linest>
+            <a href="#link2">SHUN@Prologue</a>
+          </li>
+          <li>
+            <linest>• </linest>
+            <a href="#link3">翻唱单曲</a>
+          </li>
+        </ul>
+      </nav>
 
+    <!-- 下半部分：链接列表 -->
+      <section class="links-section">
+        <ul class="links-list">
+          <center id="link1"><h2>六个最珍贵的瞬间</h2></center>
+          <HR style= " border: 1 dashed #987cb9" width ="100%" color =#987cb9 SIZE = 1>
+          <li>
+            <a href="https://www.luogu.com.cn/problem/P10791" target="_blank">P10791 强大到让你们所有人注视</a>
+            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+          </li>
+          <li>
+            <a href="https://www.luogu.com.cn/problem/P10792" target="_blank">P10792 笑起来最帅的小孩</a>
+            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+          </li>
+          <li>
+            <a href="https://www.luogu.com.cn/problem/P10793" target="_blank">P10793 Double Champions</a>
+            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+          </li>
+          <li>
+            <a href="https://www.luogu.com.cn/problem/P10794" target="_blank">P10794 架子鼓可以站 C</a>
+            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+          </li>
+          <li>
+            <a href="https://www.luogu.com.cn/problem/P10795" target="_blank">P10795 Lamborghini (Demo)</a>
+            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+          </li>
+          <li>
+            <a href="https://www.luogu.com.cn/problem/P10796" target="_blank">P10796 我看到了，谢谢你们</a>
+            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+          </li>
+          <center id="link2"><h2>专辑 SHUN@Prologue</h2></center>
+          <HR style= " border: 1 dashed #987cb9" width ="100%" color =#987cb9 SIZE = 1>
+          <li>
+            <a href="" target="_blank">？？？</a>
+            <div class="desc">敬请期待</div>
+          </li>
+          <center id="link3"><h2>翻唱单曲</h2></center>
+          <HR style= " border: 1 dashed #987cb9" width ="100%" color =#987cb9 SIZE = 1>
+          <li>
+            <a href="" target="_blank">？？？</a>
+            <div class="desc">敬请期待</div>
+          </li>
+        </ul>
+      </section>
+    </div>
   </div>
 
 </body>
