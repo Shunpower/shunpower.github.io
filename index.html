@@ -3,89 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>262144 次反拍</title>
+  <title>示例静态页</title>
   <style>
     /* 全页重置和排版 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      height: 100%;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      color: #333;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: "Helvetica Neue", Arial, sans-serif; color: #333; }
 
     /* 容器分上下两部分 */
-    .container {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
+    .container { display: flex; flex-direction: column; height: 100%; }
 
     /* 上半部分 */
     .hero {
       position: relative;
-      flex: 1.5;                /* 占据可用空间的一半 */
-      min-height: 25vh;       /* 至少 25% 视窗高度 */
+      flex: 1;
+      min-height: 25vh;
       display: flex;
+      justify-content: center;
       align-items: flex-end;
       padding-bottom: 20px;
-      justify-content: center;
       text-align: left;
       color: white;
       overflow: hidden;
     }
-    /* 背景图与半透明效果 */
     .hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: url('https://raw.githubusercontent.com/Shunpower/shunpower.github.io/refs/heads/main/background.jpg') no-repeat top center/cover;
+      background: url('https://raw.githubusercontent.com/Shunpower/shunpower.github.io/refs/heads/main/background.jpg') no-repeat top center;
+      background-size: cover;
       opacity: 0.5;
       z-index: 0;
     }
-    /* 上半部分文字容器 */
     .hero .text {
       position: relative;
       display: flex;
-      width: 80%;
-      max-width: 1000px;
-      /* 使用 flex 布局左右排版 */
+      width: 80%; max-width: 1000px;
       justify-content: space-between;
-      align-items: flex-start;
       z-index: 1;
     }
-    .hero .title {
-      font-size: 7rem;
-      line-height: 1.2;
-      font-weight: bold;
-      width: 50%;
-    }
-    .hero .subtitle {
-      font-size: 1rem;
-      color: #ccc;
-      width: 40%;
-      line-height: 1.5;
-    }
+    .hero .title { font-size: 3rem; line-height: 1.2; font-weight: bold; width: 50%; }
+    .hero .subtitle { font-size: 1rem; color: #ccc; width: 40%; line-height: 1.5; }
 
     /* 下半部分 */
-    .links-section {
-      background: white;
-      padding: 40px 20px;
-      flex: 1;                /* 也占据一半空间 */
-      overflow-y: auto;
-    }
-    .links-list {
-      list-style: none;
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+    .links-section { background: white; padding: 40px 20px; flex: 1; overflow-y: auto; }
+    .links-list { list-style: none; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
     .links-list li {
       display: flex;
       flex-direction: column;
@@ -94,20 +56,26 @@
       border-radius: 6px;
       transition: box-shadow .2s;
     }
-    .links-list li:hover {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+    .links-list li:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+    /* 链接默认样式 */
     .links-list a {
+      display: inline-block;
       font-size: 1.2rem;
       color: #0366d6;
       text-decoration: none;
       margin-bottom: 6px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: background .2s, color .2s;
     }
-    .links-list .desc {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.4;
+    /* 悬停效果 */
+    .links-list a:hover {
+      background-color: #0366d6;
+      color: #fff;
     }
+
+    .links-list .desc { font-size: 0.9rem; color: #666; line-height: 1.4; }
   </style>
 </head>
 <body>
@@ -117,12 +85,8 @@
     <!-- 上半部分：背景图 + 标题 + 简介 -->
     <header class="hero">
       <div class="text">
-        <div class="title">
-          262144 次反拍
-        </div>
-        <div class="subtitle">
-          该企划由<a href="https://www.weibo.com/u/7607032128" target="_blank">顺式还原剂</a>在张峻豪 18 岁生日时发起，旨在维护张峻豪相关算法竞赛题集，以张峻豪的名义为算法竞赛添砖加瓦。
-        </div>
+        <div class="title">262144 次反拍</div>
+        <div class="subtitle">该企划由<a href="https://www.weibo.com/u/7607032128" target="_blank">顺式还原剂</a>在张峻豪 18 岁生日时发起，旨在维护张峻豪相关算法竞赛题集，以张峻豪的名义为算法竞赛添砖加瓦。</div>
       </div>
     </header>
 
@@ -131,7 +95,7 @@
       <ul class="links-list">
         <li>
           <a href="https://example.com/link1" target="_blank">示例链接 1</a>
-          <div class="desc">这里是对示例链接 1 的简短介绍，告诉访客这个链接的作用或目标。</div>
+          <div class="desc">这里是对示例链接 1 的简短介绍。</div>
         </li>
         <li>
           <a href="https://example.com/link2" target="_blank">示例链接 2</a>
@@ -141,7 +105,6 @@
           <a href="https://example.com/link3" target="_blank">示例链接 3</a>
           <div class="desc">这里是对示例链接 3 的简短介绍。</div>
         </li>
-        <!-- 按需增减 -->
       </ul>
     </section>
 
