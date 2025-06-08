@@ -3,45 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>我的链接页</title>
+  <title>示例静态页</title>
   <style>
-    /* 让整个页面成为一个 Flex 容器，垂直水平双向居中 */
-    body {
+    /* 全页重置和排版 */
+    * {
       margin: 0;
-      height: 100vh;                /* 视窗高度 */
-      display: flex;
-      justify-content: center;      /* 水平居中 */
-      align-items: center;          /* 垂直居中 */
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    /* 链接列表容器 */
-    .links {
-      display: flex;
-      flex-direction: column;       /* 垂直排列 */
-      gap: 12px;                    /* 链接之间的间距 */
-      text-align: center;
+    html, body {
+      height: 100%;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: #333;
     }
-    .links a {
-      text-decoration: none;
+
+    /* 容器分上下两部分 */
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* 上半部分 */
+    .hero {
+      position: relative;
+      flex: 1;                /* 占据可用空间的一半 */
+      min-height: 25vh;       /* 至少 25% 视窗高度 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      color: white;
+      overflow: hidden;
+    }
+    /* 背景图与半透明效果 */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('你的图片地址.jpg') no-repeat center/cover;
+      opacity: 0.5;
+      z-index: 0;
+    }
+    /* 上半部分文字容器 */
+    .hero .text {
+      position: relative;
+      display: flex;
+      width: 80%;
+      max-width: 1000px;
+      /* 使用 flex 布局左右排版 */
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 1;
+    }
+    .hero .title {
+      font-size: 3rem;
+      line-height: 1.2;
+      font-weight: bold;
+      width: 50%;
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      color: #ccc;
+      width: 40%;
+      line-height: 1.5;
+    }
+
+    /* 下半部分 */
+    .links-section {
+      background: white;
+      padding: 40px 20px;
+      flex: 1;                /* 也占据一半空间 */
+      overflow-y: auto;
+    }
+    .links-list {
+      list-style: none;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .links-list li {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      transition: box-shadow .2s;
+    }
+    .links-list li:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .links-list a {
       font-size: 1.2rem;
       color: #0366d6;
-      padding: 8px 16px;
-      border: 1px solid #0366d6;
-      border-radius: 4px;
-      transition: background .2s, color .2s;
+      text-decoration: none;
+      margin-bottom: 6px;
     }
-    .links a:hover {
-      background: #0366d6;
-      color: white;
+    .links-list .desc {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.4;
     }
   </style>
 </head>
 <body>
-  <div class="links">
-    <a href="https://example.com">示例链接 1</a>
-    <a href="https://github.com">我的 GitHub</a>
-    <a href="https://blog.example.com">个人博客</a>
+
+  <div class="container">
+
+    <!-- 上半部分：背景图 + 标题 + 简介 -->
+    <header class="hero">
+      <div class="text">
+        <div class="title">
+          这是页面的主标题
+        </div>
+        <div class="subtitle">
+          这里是简要的介绍文字，用灰色小字展示，你可以在这里写一段 2-3 行的描述，概括页面的用途或主题。
+        </div>
+      </div>
+    </header>
+
+    <!-- 下半部分：链接列表 -->
+    <section class="links-section">
+      <ul class="links-list">
+        <li>
+          <a href="https://example.com/link1" target="_blank">示例链接 1</a>
+          <div class="desc">这里是对示例链接 1 的简短介绍，告诉访客这个链接的作用或目标。</div>
+        </li>
+        <li>
+          <a href="https://example.com/link2" target="_blank">示例链接 2</a>
+          <div class="desc">这里是对示例链接 2 的简短介绍。</div>
+        </li>
+        <li>
+          <a href="https://example.com/link3" target="_blank">示例链接 3</a>
+          <div class="desc">这里是对示例链接 3 的简短介绍。</div>
+        </li>
+        <!-- 按需增减 -->
+      </ul>
+    </section>
+
   </div>
+
 </body>
 </html>
