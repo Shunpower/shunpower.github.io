@@ -15,7 +15,8 @@
     /* 上半部分 */
     .hero {
       position: relative;
-      flex: 2;
+      height: 40vh;
+      flex: none;
       min-height: 25vh;
       display: flex;
       justify-content: center;
@@ -46,7 +47,7 @@
     .hero .subtitle { font-size: 1rem; color: #ccc; width: 40%; line-height: 1.5; }
 
     /* 下半部分 */
-    .links-section { background: white; padding: 40px 20px; flex: 1; overflow-y: auto; }
+    .links-section { background: white; padding: 40px 20px; height: 60vh; flex: none; overflow-y: auto; }
     .links-list { list-style: none; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
     .links-list li {
       display: flex;
@@ -106,6 +107,18 @@
     <!-- 下半部分：链接列表 -->
     <section class="links-section">
       <ul class="links-list">
+        <li>
+          <a href="https://example.com/link1" target="_blank">示例链接 1</a>
+          <div class="desc">这里是对示例链接 1 的简短介绍。</div>
+        </li>
+        <li>
+          <a href="https://example.com/link2" target="_blank">示例链接 2</a>
+          <div class="desc">这里是对示例链接 2 的简短介绍。</div>
+        </li>
+        <li>
+          <a href="https://example.com/link3" target="_blank">示例链接 3</a>
+          <div class="desc">这里是对示例链接 3 的简短介绍。</div>
+        </li>
         <li>
           <a href="https://example.com/link1" target="_blank">示例链接 1</a>
           <div class="desc">这里是对示例链接 1 的简短介绍。</div>
