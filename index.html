@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>我的链接页</title>
+  <style>
+    /* 让整个页面成为一个 Flex 容器，垂直水平双向居中 */
+    body {
+      margin: 0;
+      height: 100vh;                /* 视窗高度 */
+      display: flex;
+      justify-content: center;      /* 水平居中 */
+      align-items: center;          /* 垂直居中 */
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+    /* 链接列表容器 */
+    .links {
+      display: flex;
+      flex-direction: column;       /* 垂直排列 */
+      gap: 12px;                    /* 链接之间的间距 */
+      text-align: center;
+    }
+    .links a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #0366d6;
+      padding: 8px 16px;
+      border: 1px solid #0366d6;
+      border-radius: 4px;
+      transition: background .2s, color .2s;
+    }
+    .links a:hover {
+      background: #0366d6;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="links">
+    <a href="https://example.com">示例链接 1</a>
+    <a href="https://github.com">我的 GitHub</a>
+    <a href="https://blog.example.com">个人博客</a>
+  </div>
+</body>
+</html>
