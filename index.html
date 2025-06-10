@@ -1,254 +1,441 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-  <link rel="icon" href="/favicon.jpg" type="image/x-icon">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>262144 次反拍企划</title>
-  <style>
-    /* 全页重置和排版 */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; font-family: "Helvetica Neue", Arial, sans-serif; color: #333; }
+	<link rel="icon" href="/favicon.jpg" type="image/x-icon">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>262144 次反拍企划</title>
+	<style>
+		/* 全页重置和排版 */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-    /* 容器分上下两部分 */
-    .container { display: flex; flex-direction: column; height: 100%; }
+		html,
+		body {
+			height: 100%;
+			font-family: "Helvetica Neue", Arial, sans-serif;
+			color: #333;
+		}
 
-    /* 上半部分 */
-    .hero {
-      position: relative;
-      height: 30vh;
-      flex: none;
-      min-height: 15vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      padding-bottom: 20px;
-      text-align: left;
-      color: white;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('/background.jpg') no-repeat top center;
-      background-size: cover;
-      opacity: 0.5;
-      z-index: 0;
-    }
-    .hero .text {
-      position: relative;
-      display: flex;
-      width: 80%; max-width: 1000px;
-      justify-content: space-between;
-      z-index: 1;
-    }
-    .hero .title { font-size: 4rem; line-height: 1.2; font-weight: bold; width: 50%; }
-    .hero .subtitle { font-size: 1rem; color: white; width: 40%; line-height: 1.5; }
-    
-     .content {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
-      gap: 20px;           /* 侧边栏与主内容之间留出间距 */
-      padding: 0 20px;     /*内容区左右内边距*/
-      /* max-width: ;   限制整体宽度 */
-      margin: 0 auto;      /*居中显示内容区*/
-    }
+		/* 容器分上下两部分 */
+		.container {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
 
-    /* 下半部分 */
-    .links-section { background: white; padding: 40px 20px; height: 65vh; flex: none; overflow-y: auto; }
-    .links-list { list-style: none; width: 50vw; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-    .links-list li {
-      display: flex;
-      flex-direction: column;
-      padding: 10px 15px;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
-      transition: box-shadow .2s;
-    }
-    .links-list li:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+		/* 上半部分 */
+		.hero {
+			position: relative;
+			height: 30vh;
+			flex: none;
+			min-height: 15vh;
+			display: flex;
+			justify-content: center;
+			align-items: flex-end;
+			padding-bottom: 20px;
+			text-align: left;
+			color: white;
+			overflow: hidden;
+		}
 
-    /* 链接默认样式 */
-    .links-list a {
-      display: inline-block;
-      font-size: 1.2rem;
-      color: #fb8ef5;
-      text-decoration: none;
-      margin-bottom: 6px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      transition: background .2s, color .2s;
-    }
-    /* 悬停效果 */
-    .links-list a:hover {
-      background-color: #fb8ef5;
-      color: #fff;
-    }
+		.hero::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url('/background.jpg') no-repeat top center;
+			background-size: cover;
+			opacity: 0.5;
+			z-index: 0;
+		}
 
-    .links-list .desc { font-size: 0.9rem; color: #666; line-height: 1.4; }
+		.hero .text {
+			position: relative;
+			display: flex;
+			width: 80%;
+			max-width: 1000px;
+			justify-content: space-between;
+			z-index: 1;
+		}
 
-    .sidebar { width: 15vw; background: #f5f5f5; padding: 20px; border-right: 1px solid #e0e0e0; overflow-y: auto; }
-    .sidebar ul { list-style: none; }
-    .sidebar li + li { margin-top: 10px; }
-    .sidebar-title {
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 16px;  /* 标题下方与列表间距 */
-    }
-    .sidebar linest { text-decoration: none; color: #000; font-size: 1rem; transition: color .2s; }
-    .sidebar a { text-decoration: none; color: #fda7f9; font-size: 1rem; transition: color .2s; }
-    .sidebar a:hover { color: #f656db; }
+		.hero .title {
+			font-size: 4rem;
+			line-height: 1.2;
+			font-weight: bold;
+			width: 50%;
+		}
 
-    .samplelinks a {
-      display: inline-block;
-      font-size: 1rem;
-      color: #497ce9;
-      text-decoration: none;
-      /* margin-bottom: 6px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      transition: background .2s, color .2s; */
-    }
-    
-    .samplelinks a:hover {
-      color: white;
-    }
+		.hero .subtitle {
+			font-size: 1rem;
+			color: white;
+			width: 40%;
+			line-height: 1.5;
+		}
 
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #f5f5f5;
-      height: 5vh;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex: none;
-      padding: 0 20px;
-    }
-    .signature { font-size: 0.9rem; color: #666; }
-    .friend-links a {
-      margin-left: 15px;
-      font-size: 1rem;
-      color: #497ce9;
-      text-decoration: none;
-    }
-    .friend-links a:hover { color: #3969d0; }
-      /* 给友情链接前面加图标 */
-      .friend-links a {
-        display: inline-flex;
-        align-items: center;
-      }
-      .friend-links .friend-icon {
-        width: 16px;
-        height: 16px;
-        margin-right: 6px;
-        vertical-align: middle;
-      }
-  </style>
+		.content {
+			display: flex;
+			flex: 1;
+			overflow: hidden;
+			gap: 20px;
+			/* 侧边栏与主内容之间留出间距 */
+			padding: 0 20px;
+			/*内容区左右内边距*/
+			/* max-width: ;   限制整体宽度 */
+			margin: 0 auto;
+			/*居中显示内容区*/
+		}
+
+		/* 下半部分 */
+		.links-section {
+			background: white;
+			padding: 40px 20px;
+			height: 65vh;
+			flex: none;
+			overflow-y: auto;
+		}
+
+		.links-list {
+			list-style: none;
+			width: 50vw;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		.links-list li {
+			display: flex;
+			flex-direction: column;
+			padding: 10px 15px;
+			border: 1px solid #e0e0e0;
+			border-radius: 6px;
+			transition: box-shadow .2s;
+		}
+
+		.links-list li:hover {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		/* 链接默认样式 */
+		.links-list a {
+			display: inline-block;
+			font-size: 1.2rem;
+			color: #fb8ef5;
+			text-decoration: none;
+			margin-bottom: 6px;
+			padding: 4px 8px;
+			border-radius: 4px;
+			transition: background .2s, color .2s;
+		}
+
+		/* 悬停效果 */
+		.links-list a:hover {
+			background-color: #fb8ef5;
+			color: #fff;
+		}
+
+		.links-list .desc {
+			font-size: 0.9rem;
+			color: #666;
+			line-height: 1.4;
+		}
+
+		.sidebar {
+			width: 15vw;
+			background: #f5f5f5;
+			padding: 20px;
+			border-right: 1px solid #e0e0e0;
+			overflow-y: auto;
+		}
+
+		.sidebar ul {
+			list-style: none;
+		}
+
+		.sidebar li+li {
+			margin-top: 10px;
+		}
+
+		.sidebar-title {
+			text-align: center;
+			font-size: 1.2rem;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 16px;
+			/* 标题下方与列表间距 */
+		}
+
+		.sidebar linest {
+			text-decoration: none;
+			color: #000;
+			font-size: 1rem;
+			transition: color .2s;
+		}
+
+		.sidebar a {
+			text-decoration: none;
+			color: #fda7f9;
+			font-size: 1rem;
+			transition: color .2s;
+		}
+
+		.sidebar a:hover {
+			color: #f656db;
+		}
+
+		.samplelinks a {
+			display: inline-block;
+			font-size: 1rem;
+			color: #497ce9;
+			text-decoration: none;
+		}
+
+		.samplelinks a:hover {
+			color: white;
+		}
+
+		.footer {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: #f5f5f5;
+			height: 5vh;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex: none;
+			padding: 0 20px;
+		}
+
+		.signature {
+			font-size: 0.9rem;
+			color: #666;
+		}
+
+		.friend-links a {
+			margin-left: 15px;
+			font-size: 1rem;
+			color: #497ce9;
+			text-decoration: none;
+		}
+
+		.friend-links a:hover {
+			color: #3969d0;
+		}
+
+		/* 给友情链接前面加图标 */
+		.friend-links a {
+			display: inline-flex;
+			align-items: center;
+		}
+
+		.friend-links .friend-icon {
+			width: 16px;
+			height: 16px;
+			margin-right: 6px;
+			vertical-align: middle;
+		}
+
+		@media (max-width: 1200px) {
+
+			/* hero区文字堆叠，字号缩小 */
+			.hero {
+				height: 20vh;
+			}
+
+			.hero .text {
+				flex-direction: column;
+				align-items: flex-start;
+				width: 90%;
+			}
+
+			.hero .title {
+				font-size: 2.5rem;
+				width: 100%;
+			}
+
+			.hero .subtitle {
+				font-size: 0.9rem;
+				width: 100%;
+				margin-top: 10px;
+			}
+
+			.samplelinks a {
+				font-size: 0.9rem;
+			}
+
+			/* 主内容区纵向堆叠，去掉侧边栏右边框 */
+			.content {
+				flex-direction: column;
+				padding: 10px;
+				gap: 10px;
+			}
+
+			.sidebar {
+				width: 100%;
+				border-right: none;
+				border-bottom: 1px solid #e0e0e0;
+				padding-bottom: 10px;
+				margin-bottom: 10px;
+				height: 20vh;
+			}
+
+			.links-section {
+				padding: 20px 10px;
+				height: 45vh;
+				/* 高度自适应 */
+			}
+
+			/* 链接列表宽度改为 100% */
+			.links-list {
+				width: 100%;
+				max-width: none;
+			}
+
+			/* 列表项内边距微调 */
+			.links-list li {
+				padding: 8px 10px;
+			}
+
+			/* 页脚多行布局，去掉固定高度 */
+			.footer {
+				position: fixed;
+				flex-direction: column;
+				align-items: center;
+				padding: 10px;
+				height: 8vh;
+			}
+
+			.signature {
+				margin-bottom: 8px;
+			}
+
+			.friend-links {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.friend-links a {
+				margin: 5px 10px;
+			}
+		}
+	</style>
 </head>
+
 <body>
-  
-  <div class="container">
 
-    <!-- 上半部分：背景图 + 标题 + 简介 -->
-    <section class="samplelinks">
-        <header class="hero">
-        <div class="text">
-            <div class="title">262144 次反拍</div>
-            <div class="subtitle">262144 次反拍（262144 Backbeats）企划由<a href="https://www.weibo.com/u/7607032128" target="_blank">顺式还原剂</a>在张峻豪 18 岁生日时发起，旨在维护张峻豪相关算法竞赛题集。</div>
-        </div>
-        </header>
-    </section>
+	<div class="container">
 
-    
-    <div class="content">
-      <nav class="sidebar">
-        <div class="sidebar-title">题集目录</div>
-        <ul>
-          <li>
-            <linest>• </linest>
-            <a href="#link1">六个最珍贵的瞬间</a>
-          </li>
-          <li>
-            <linest>• </linest>
-            <a href="#link2">SHUN@Prologue</a>
-          </li>
-          <li>
-            <linest>• </linest>
-            <a href="#link3">翻唱单曲</a>
-          </li>
-        </ul>
-      </nav>
+		<!-- 上半部分：背景图 + 标题 + 简介 -->
+		<section class="samplelinks">
+			<header class="hero">
+				<div class="text">
+					<div class="title">262144 次反拍</div>
+					<div class="subtitle">262144 次反拍（262144 Backbeats）企划由<a href="https://www.weibo.com/u/7607032128"
+							target="_blank">顺式还原剂</a>在张峻豪 18 岁生日时发起，旨在维护张峻豪相关算法竞赛题集。</div>
+				</div>
+			</header>
+		</section>
 
-    <!-- 下半部分：链接列表 -->
-      <section class="links-section">
-        <ul class="links-list">
-          <center id="link1"><h2>六个最珍贵的瞬间</h2></center>
-          <HR style= " border: 1 dashed #987cb9" width ="100%" color =#987cb9 SIZE = 1>
-          <li>
-            <a href="https://www.luogu.com.cn/problem/P10791" target="_blank">P10791 强大到让你们所有人注视</a>
-            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
-          </li>
-          <li>
-            <a href="https://www.luogu.com.cn/problem/P10792" target="_blank">P10792 笑起来最帅的小孩</a>
-            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
-          </li>
-          <li>
-            <a href="https://www.luogu.com.cn/problem/P10793" target="_blank">P10793 Double Champions</a>
-            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
-          </li>
-          <li>
-            <a href="https://www.luogu.com.cn/problem/P10794" target="_blank">P10794 架子鼓可以站 C</a>
-            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
-          </li>
-          <li>
-            <a href="https://www.luogu.com.cn/problem/P10795" target="_blank">P10795 Lamborghini (Demo)</a>
-            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
-          </li>
-          <li>
-            <a href="https://www.luogu.com.cn/problem/P10796" target="_blank">P10796 我看到了，谢谢你们</a>
-            <div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
-          </li>
-          <center id="link2"><h2>专辑 SHUN@Prologue</h2></center>
-          <HR style= " border: 1 dashed #987cb9" width ="100%" color =#987cb9 SIZE = 1>
-          <li>
-            <a href="" target="_blank">？？？</a>
-            <div class="desc">敬请期待</div>
-          </li>
-          <center id="link3"><h2>翻唱单曲</h2></center>
-          <HR style= " border: 1 dashed #987cb9" width ="100%" color =#987cb9 SIZE = 1>
-          <li>
-            <a href="" target="_blank">？？？</a>
-            <div class="desc">敬请期待</div>
-          </li>
-        </ul>
-      </section>
-    </div>
-  </div>
-  <footer class="footer">
-    <div class="signature">May the force be with you and me. powered by SHUN_Reductant, 2025</div>
-    <div class="friend-links">
-          <a href="https://www.weibo.com/u/7635971784" target="_blank">
-            <img src="/weibo_icon.png" alt="" class="friend-icon">
-            张峻豪
-          </a>
-      
-          <a href="https://www.weibo.com/u/7481905399" target="_blank">
-            <img src="/weibo_icon.png" alt="" class="friend-icon">
-            张峻豪的庄园助手
-          </a>
-          
-          <a href="https://www.weibo.com/u/7607032128" target="_blank">
-            <img src="/weibo_icon.png" alt="" class="friend-icon">
-            顺式还原剂
-          </a>
-    </div>
-  </footer>
+
+		<div class="content">
+			<nav class="sidebar">
+				<div class="sidebar-title">题集目录</div>
+				<ul>
+					<li>
+						<linest>• </linest>
+						<a href="#link1">六个最珍贵的瞬间</a>
+					</li>
+					<li>
+						<linest>• </linest>
+						<a href="#link2">SHUN@Prologue</a>
+					</li>
+					<li>
+						<linest>• </linest>
+						<a href="#link3">翻唱单曲</a>
+					</li>
+				</ul>
+			</nav>
+
+			<!-- 下半部分：链接列表 -->
+			<section class="links-section">
+				<ul class="links-list">
+					<center id="link1">
+						<h2>六个最珍贵的瞬间</h2>
+					</center>
+					<HR style=" border: 1 dashed #987cb9" width="100%" color=#987cb9 SIZE=1>
+					<li>
+						<a href="https://www.luogu.com.cn/problem/P10791" target="_blank">P10791 强大到让你们所有人注视</a>
+						<div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+					</li>
+					<li>
+						<a href="https://www.luogu.com.cn/problem/P10792" target="_blank">P10792 笑起来最帅的小孩</a>
+						<div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+					</li>
+					<li>
+						<a href="https://www.luogu.com.cn/problem/P10793" target="_blank">P10793 Double Champions</a>
+						<div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+					</li>
+					<li>
+						<a href="https://www.luogu.com.cn/problem/P10794" target="_blank">P10794 架子鼓可以站 C</a>
+						<div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+					</li>
+					<li>
+						<a href="https://www.luogu.com.cn/problem/P10795" target="_blank">P10795 Lamborghini (Demo)</a>
+						<div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+					</li>
+					<li>
+						<a href="https://www.luogu.com.cn/problem/P10796" target="_blank">P10796 我看到了，谢谢你们</a>
+						<div class="desc">—— 张峻豪 17 岁生日应援『SpOI』Round 1: Happy 17th Birthday, Shun!</div>
+					</li>
+					<center id="link2">
+						<h2>专辑 SHUN@Prologue</h2>
+					</center>
+					<HR style=" border: 1 dashed #987cb9" width="100%" color=#987cb9 SIZE=1>
+					<li>
+						<a href="" target="_blank">？？？</a>
+						<div class="desc">敬请期待</div>
+					</li>
+					<center id="link3">
+						<h2>翻唱单曲</h2>
+					</center>
+					<HR style=" border: 1 dashed #987cb9" width="100%" color=#987cb9 SIZE=1>
+					<li>
+						<a href="" target="_blank">？？？</a>
+						<div class="desc">敬请期待</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="signature">May the force be with you and me. powered by SHUN_Reductant, 2025</div>
+		<div class="friend-links">
+			<a href="https://www.weibo.com/u/7635971784" target="_blank">
+				<img src="/weibo_icon.png" alt="" class="friend-icon">
+				张峻豪
+			</a>
+
+			<a href="https://www.weibo.com/u/7481905399" target="_blank">
+				<img src="/weibo_icon.png" alt="" class="friend-icon">
+				张峻豪的庄园助手
+			</a>
+
+			<a href="https://www.weibo.com/u/7607032128" target="_blank">
+				<img src="/weibo_icon.png" alt="" class="friend-icon">
+				顺式还原剂
+			</a>
+		</div>
+	</footer>
 </body>
+
 </html>
